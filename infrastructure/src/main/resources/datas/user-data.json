@@ -1,0 +1,22 @@
+[
+  {
+    "_class": "com.versusmind.demo.infrastructure.dao.entities.ConsumerEntity",
+    "firstname": "Homer",
+    "lastname": "Simpson",
+    "address": {
+      "number": "742",
+      "street": "Evergreen Terrace",
+      "city": "Springfield"
+    }
+  },
+  {
+    "_class": "com.versusmind.demo.infrastructure.dao.entities.ConsumerEntity",
+    "firstname": "Ned",
+    "lastname": "Flanders",
+    "address": {
+      "number": "740",
+      "street": "Evergreen Terrace",
+      "city": "Springfield"
+    }
+  }
+]
