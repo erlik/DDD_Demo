@@ -1,4 +1,4 @@
-package com.versusmind.demo.core.adapters;
+package com.versusmind.demo.core.domain.adapters;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

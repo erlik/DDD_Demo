@@ -1,7 +1,7 @@
 package com.versusmind.demo.infrastructure.ports;
 
-import com.versusmind.demo.core.handlers.events.Event;
-import com.versusmind.demo.core.handlers.events.EventResponse;
+import com.versusmind.demo.core.domain.requestBus.events.Event;
+import com.versusmind.demo.core.domain.requestBus.events.EventResponse;
 import com.versusmind.demo.domain.handlers.GetAllConsumerEvent;
 import com.versusmind.demo.domain.handlers.GetByIdConsumerEvent;
 import com.versusmind.demo.domain.ports.ConsumerPort;
@@ -17,13 +17,13 @@ public class ConsumerPortImpl extends AbstractPort implements ConsumerPort {
     @Override
     @GetMapping("/")
     public EventResponse getAll() {
-        return eventBusDispatcher.handle(new GetAllConsumerEvent());
+        return requestBusFactory.handle(new GetAllConsumerEvent());
     }
 
     @Override
     @GetMapping("/{id}")
     public EventResponse getById(@PathVariable UUID id) {
         Event e = new GetByIdConsumerEvent(id);
-        return eventBusDispatcher.handle(e);
+        return requestBusFactory.handle(e);
     }
 }

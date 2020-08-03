@@ -1,6 +1,6 @@
 package com.versusmind.demo.domain;
 
-import com.versusmind.demo.core.ValueObject;
+import com.versusmind.demo.core.domain.ValueObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;

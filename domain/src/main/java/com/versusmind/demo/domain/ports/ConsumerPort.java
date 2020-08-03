@@ -1,7 +1,7 @@
 package com.versusmind.demo.domain.ports;
 
-import com.versusmind.demo.core.handlers.events.EventResponse;
-import com.versusmind.demo.core.ports.Port;
+import com.versusmind.demo.core.domain.requestBus.events.EventResponse;
+import com.versusmind.demo.core.domain.ports.Port;
 
 import java.util.UUID;
 

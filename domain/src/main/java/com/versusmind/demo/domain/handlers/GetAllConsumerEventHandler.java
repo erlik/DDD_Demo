@@ -1,9 +1,9 @@
 package com.versusmind.demo.domain.handlers;
 
-import com.versusmind.demo.core.annotations.EventHandler;
+import com.versusmind.demo.core.domain.annotations.Handler;
+import com.versusmind.demo.core.domain.requestBus.events.EventResponse;
 import com.versusmind.demo.domain.ConsumerValueObject;
 import com.versusmind.demo.domain.adapters.ConsumerAdapter;
-import com.versusmind.demo.core.handlers.events.EventResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,8 +17,8 @@ public class GetAllConsumerEventHandler {
     @Autowired
     private ConsumerAdapter adapter;
 
-    @EventHandler
-    public EventResponse handle(GetAllConsumerEvent event) {
+    @Handler
+    public EventResponse getAll(GetAllConsumerEvent event) {
         List<ConsumerValueObject> consumers;
         if (event.getUuids() == null || event.getUuids().isEmpty()) {
             consumers = adapter.findAll();
