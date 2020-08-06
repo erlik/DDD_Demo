@@ -1,7 +1,7 @@
-package com.versusmind.demo.core.domain.annotations;
+package com.versusmind.demo.core.domain.handlerBus.annotations;
 
-import com.versusmind.demo.core.domain.requestBus.RequestHandlerRegister;
-import com.versusmind.demo.core.infrastructure.RequestBusFactoryImpl;
+import com.versusmind.demo.core.domain.handlerBus.HandlerBusDispatcher;
+import com.versusmind.demo.core.domain.handlerBus.HandlerRegister;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -11,10 +11,10 @@ import java.util.Arrays;
 
 @Slf4j
 @Component
-public class HandlerPostProcessor implements BeanPostProcessor {
+public class HandlerAnnotationPostProcessor implements BeanPostProcessor {
 
     @Autowired
-    private RequestBusFactoryImpl eventBus;
+    private HandlerBusDispatcher eventBus;
 
     @Override
     public Object postProcessAfterInitialization(Object object, String beanName) {
@@ -23,14 +23,13 @@ public class HandlerPostProcessor implements BeanPostProcessor {
             if (method.isAnnotationPresent(Handler.class)) {
                 if (method.getParameterCount() == 1) {
                     Class<?> parameter = method.getParameterTypes()[0];
-                    RequestHandlerRegister requestHandlerRegister = RequestHandlerRegister
+                    HandlerRegister handlerRegister = HandlerRegister
                             .builder()
-                            .classHandler(classHandler)
+                            .classHandler(object)
                             .methodHandler(method)
                             .trigger(parameter)
                             .build();
-
-                    eventBus.register(requestHandlerRegister);
+                    eventBus.register(handlerRegister);
                 } else {
                     log.error("EventHandler - params need to implement RequestWrapper interface ");
                 }

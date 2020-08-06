@@ -1,4 +1,4 @@
-package com.versusmind.demo.core.domain.annotations;
+package com.versusmind.demo.core.domain.handlerBus.annotations;
 
 import java.lang.annotation.*;
 

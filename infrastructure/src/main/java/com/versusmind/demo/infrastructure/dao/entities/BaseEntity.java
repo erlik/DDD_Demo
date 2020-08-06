@@ -21,7 +21,7 @@ import java.util.UUID;
 public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     @Column(name = "created_date", nullable = false, updatable = false)
     @CreatedDate

@@ -26,9 +26,10 @@
     </properties>
 
     <modules>
-        <module>core</module>
+        <module>core-domain</module>
         <module>domain</module>
         <module>infrastructure</module>
+        <module>core-infra</module>
     </modules>
 
     <dependencyManagement>

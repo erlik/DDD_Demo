@@ -1,4 +1,4 @@
-package com.versusmind.demo.core.domain.requestBus;
+package com.versusmind.demo.core.domain.handlerBus;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,10 +6,10 @@ import lombok.Getter;
 import java.lang.reflect.Method;
 
 @Builder
-public class RequestHandlerRegister {
+public class HandlerRegister {
 
     @Getter
-    private Class<?> classHandler;
+    private Object classHandler;
 
     @Getter
     private Method methodHandler;
