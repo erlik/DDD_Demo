@@ -1,7 +1,7 @@
 package com.versusmind.demo.domain.handlers;
 
-import com.versusmind.demo.core.domain.annotations.Handler;
-import com.versusmind.demo.core.domain.requestBus.events.EventResponse;
+import com.versusmind.demo.core.domain.HandlerResponse;
+import com.versusmind.demo.core.domain.requestBus.AbstractHandler;
 import com.versusmind.demo.domain.adapters.ConsumerAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +9,17 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class GetByIdConsumerEventHandler {
+public class GetByIdConsumerEventHandler extends AbstractHandler<GetByIdConsumerEvent> {
 
     @Autowired
     private ConsumerAdapter adapter;
 
-    @Handler
-    public EventResponse getById(GetByIdConsumerEvent event) {
+    @Override
+    public HandlerResponse handle(GetByIdConsumerEvent event) {
         try {
-            return EventResponse.WithValue(adapter.getById(event.getUuid()));
+            return HandlerResponse.WithValue(adapter.getById(event.getUuid()));
         } catch (Exception e) {
-            return EventResponse.WithFault(e);
+            return HandlerResponse.WithFault(e);
         }
     }
 }
