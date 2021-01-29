@@ -17,18 +17,18 @@ import java.util.stream.Stream;
 public class JpaPopulators {
 
     @Value("${app.populator.datasDir}")
-    private String _path;
+    private String path;
 
     @Bean
-    public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() throws Exception {
+    public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
         Resource[] files = new Resource[]{};
 
         try {
-            File dir = new ClassPathResource(_path).getFile();
+            File dir = new ClassPathResource(path).getFile();
             files = Stream.of(dir.listFiles())
                     .filter(f -> !f.isDirectory() && f.getName().contains(".json"))
-                    .map(f -> new ClassPathResource(_path + '/' + f.getName()))
+                    .map(f -> new ClassPathResource(path + '/' + f.getName()))
                     .toArray(Resource[]::new);
 
         } catch (IOException e) {

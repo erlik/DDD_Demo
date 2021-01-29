@@ -1,5 +1,6 @@
 package com.versusmind.demo.infrastructure.dao.entities;
 
+import com.versusmind.demo.core.infra.dao.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

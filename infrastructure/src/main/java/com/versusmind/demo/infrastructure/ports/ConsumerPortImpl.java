@@ -1,7 +1,7 @@
 package com.versusmind.demo.infrastructure.ports;
 
-import com.versusmind.demo.core.domain.HandlerResponse;
-import com.versusmind.demo.core.domain.requestBus.events.Event;
+import com.versusmind.demo.core.domain.requestBus.HandlerResponse;
+import com.versusmind.demo.core.domain.requestBus.Event;
 import com.versusmind.demo.domain.handlers.GetAllConsumerEvent;
 import com.versusmind.demo.domain.handlers.GetByIdConsumerEvent;
 import com.versusmind.demo.domain.ports.ConsumerPort;
