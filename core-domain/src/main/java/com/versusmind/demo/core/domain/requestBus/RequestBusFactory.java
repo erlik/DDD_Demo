@@ -5,11 +5,11 @@ import java.util.Set;
 
 public interface RequestBusFactory {
 
-    <E extends Event> HandlerResponse handle(E event);
+    <E extends EventDomain> HandlerResponse handle(E event);
 
-    <E extends Event> Optional<Handler>  getHandler(E event);
+    <E extends EventDomain> Optional<Handler<E>>  getHandler(E event);
 
-    Set<Handler> getHandlers();
+    <E extends EventDomain> Set<Handler<E>> getHandlers();
 
-    <E extends Event> void unregister(E trigger);
+    <E extends EventDomain> void unregister(E trigger);
 }
